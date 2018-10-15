@@ -1,28 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+import {Route,NavLink,Switch,withRouter,Redirect} from 'react-router-dom';
+import Poetry from './components/poetry';
+import Search from './components/search';
+import Detail from './components/detail';
+import HotContent from './components/hotContent';
+import 'antd-mobile/dist/antd-mobile.css';
+class App extends React.Component {
+    render(){
+      return <div className="Poetry">
+            <Switch>
+                    <Route path="/poetry" component={Poetry} />
+                    <Route path="/search" component={Search} />
+                    <Route path="/detail" component={Detail} />
+                    <Route path="/hotContent" component={HotContent}/>
+            </Switch>
+    </div>
+    }
 }
-
 export default App;
