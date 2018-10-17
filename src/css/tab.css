@@ -1,6 +1,8 @@
-html,body{height: 100%;}
-.homepage .header{position: fixed;left:0;top:0;right:0;background: #fff;z-index:100;}
-.links{height:58px;}
+html,body{height: 100%;background:#FAF6F3;}
+.homepage .header .am-navbar-light{background: #FAF6F3;color:#999999;}
+.homepage .header .am-navbar-title{font-size:24px;}
+.homepage .header{position: fixed;left:0;top:0;right:0;z-index:100;background:#FAF6F3;}
+.links{height:58px;z-index:100;border-top:1px solid #ddd;border-bottom:1px solid #ddd;}
 .links ul{
     display:flex;height:30px;list-style:none;margin:14px 0;
 }
@@ -8,31 +10,51 @@ html,body{height: 100%;}
     flex:1;
 }
 .links ul li a{
-    color:#333;
+    color:#808080;
     display:inline-block;
     height:28px;
+    font-size:20px;
     line-height: 28px;
 }
 .links ul li .active{
-    border-bottom:2px solid #FFE599;
+    border-bottom:2px solid #D2AC47;
     height:28px;
 }
 .banana{padding-top:117px;z-index:1;}
 .banana .date{
     height:60px;
+    padding:10px 0;
 }
 .banana .date span{display:block;
     text-align: center;font-size: 
-    16px;line-height: 30px;height:30px;}
+    20px;line-height: 30px;height:30px;}
+.rhesis .h_header{height:40px;display: flex;border:1px solid #ddd;box-shadow:0 0 5px -1px;}
+.rhesis .h_header span{display:block;flex:1;font-size: 20px;line-height:40px;padding:0 10px;}
+.rhesis .h_header .click{text-align: right;}
+.poem .h_header{height:40px;display: flex;border:1px solid #ddd;box-shadow:0 0 5px -1px;}
+.poem .h_header span{display:block;flex:1;font-size: 20px;line-height:40px;padding:0 10px;color:#423E3F;}
+.poem .h_header .click{text-align: right;}
+.poem .poemMain{padding-left:10px;}
+.poem .poemMain span{display: block;line-height: 24px;font-size:16px;color:#807C7B;text-align: center;}
+.rShow p{line-height:30px;padding-left:15px;font-size:16px;text-align: center;}
+.rShow p:first-child{font-weight:bold;}
 .song{padding-top:117px;}
 .tang{padding-top:117px;}
 .searchHeader{display:flex;height:60px;border-bottom:1px solid #ddd;}
-.searchLeft{flex:1;text-align: center;line-height: 60px;font-size: 30px;color:#333;}
-.searchRight{flex:4;margin:10px 8px;border:1px solid #ccc;border-radius: 100px;padding:7px 20px 7px 5px;}
-.searchRight input{height:24px;border:0 none;margin-left:20px;padding-left:28px;}
-.searchRight .btn{height:24px;font-size:16px;line-height:24px;color:#FFE599;
-border-left:1px solid #ddd;padding:0 8px;display: inline-block;}
+.searchLeft{flex:1;text-align: center;line-height: 60px;font-size: 30px;color:#524E4B;}
+.searchRight{flex:4;margin:10px;border:1px solid #ccc;border-radius: 100px;padding:7px;}
+.searchRight input{height:24px;border:0 none;margin-left:15px;padding-left:10px;background:#FFFBF8;}
+.searchRight .btn{height:24px;font-size:16px;line-height:24px;color:#C8B068;
+border-left:1px solid #ddd;padding:0 20px;display: inline-block;}
 .goods .main{padding:10px 20px 10px 20px;}
-.goods .main h6{font-size:20px;margin:20px 0;}
+.goods .main h6{font-size:20px;margin:20px 0;color:#999A95;}
 .goods .main span{display:inline-block;border:1px solid #ddd;font-size:16px;
-    margin:0 0 10px 10px;padding:5px 15px;border-radius:20px;}
+    margin:0 0 10px 10px;padding:5px 15px;border-radius:20px;background:#FFFBF8;}
+.detail .title{height:30px;font-size: 18px;font-weight:bold;text-align: center;line-height: 30px;color:#333;padding:10px 0;}
+.detail .author{height:30px;font-size: 14px;text-align: center;line-height: 30px;color:#FFE599;padding-bottom:10px;}
+.detail .main span{display: block;text-align: center;height:30px;font-size: 16px;line-height:30px;color:#333;}
+.detail h2{padding-left:16px;color:#333;}
+.detail .abstract h3{padding-left:16px;}
+.detail .abstract p{padding:5px 16px;font-size:16px;line-height: 24px;color:#808080;}
+.detail .am-navbar-light{background: #FAF6F3;color:#999999;}
+.detail .content{border-top:1px solid #ddd;}

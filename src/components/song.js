@@ -29,7 +29,7 @@ class Song extends Component {
 				* 利用withRouter包装组件(推荐)
 				* 利用context
 		 */
-		console.log('测试:',this)
+		// console.log('测试:',this)
 		let {history} = this.props;
 
 		// let {history} = this.context.router;
@@ -38,7 +38,6 @@ class Song extends Component {
 		// history.replace(path);
 	}
   render() {
-    console.log("111",this.state.goods)
     return <div className="song">
           {
             this.state.goods.map((item,idx)=>{
@@ -47,10 +46,11 @@ class Song extends Component {
                   style={{
                     padding:'5px 0',
                     fontSize:'18px',
-                    fontWeight:'bold'
+                    fontWeight:'bold',
+                    color:'#363231'
                   }}
                 >{item.title}</div>
-                <div style={{paddingBottom:'5px'}}><span style={{ fontSize: '16px',color:'#FFE599'}}>{item.authors}</span></div>
+                <div style={{paddingBottom:'5px'}}><span style={{ fontSize: '16px',color:'#C8AE75'}}>{item.authors}</span></div>
                 <div style={{padding:'5px 0',borderBottom:'1px solid #ddd'}}>
                     <div style={{ marginBottom: '8px',fontSize:'16px',lineHeight:'20px' }}>{item.content.split('。')[0]}。</div>
                 </div>

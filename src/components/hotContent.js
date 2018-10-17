@@ -2,16 +2,12 @@ import React,{Component}from 'react';
 import PropTypes from 'prop-types';
 import http from '../server';
 import {Route,Link,NavLink,Redirect} from 'react-router-dom';
-import HotContentHeadline from './hotContentHeadline';
-import HotContentText from './hotContentText';
-import HotContentAll from './hotContentAll';
-import HotContentAutor from './hotContentAutor';
 class HotContent extends Component{
     constructor(){
         super();
         this.state={
             name:'',
-            goods:[],
+            data:[],
             status:true,
             menu:[
                 {
@@ -30,27 +26,35 @@ class HotContent extends Component{
             ]
         }
     }
-    componentWillMount() {
-        let title=this.props.location.search.slice(6)
-        this.setState({
-            name:title
-        })
-    }
     componentDidMount() {
-        http.get('likePoetry?name='+this.state.name).then(res=>{
-     
-            let data=res.data.result;
-            // console.log(data);
-            this.setState({
-              goods:data,
-              status:true
-          })
-        })
+        let content=this.props.location.search
+        let author=content.slice(6)
+        console.log(author);
+        http.get('likePoetry?name='+author).then(res=>{
+            console.log('数据')
+            if(res.data.result.length>=100){
+                this.setState({
+                    data:res.data.result.slice(0,100)
+                })
+            }else{
+                this.setState({
+                    data:res.data.result
+                })
+            } 
+        });
     }
+    goHome(){
+        let {history} = this.props;
+		history.push({pathname:'/poetry/home'});
+    }
+    go(res,authors){
+		let {history} = this.props;
+		history.push({pathname:'/detail',search:'?title='+res+'&author='+authors});
+	}
     render(){
         return  <div className="hotContent">
             <div className="searchHeader">
-                <div className="searchLeft">
+                <div className="searchLeft" onClick={this.goHome.bind(this)}>
                     &lt;
                 </div>
                 <div className="searchRight">
@@ -58,27 +62,23 @@ class HotContent extends Component{
                     <span className="btn">搜索</span>
                 </div>
             </div>
-            <div className="links">
-                <ul>
-                    {this.state.menu.map((item,idx)=>{
-                        return <li key={idx}>
-                            <NavLink key={idx} to={{
-                                pathname:item.path,
-                                state:this.state.goods,
-                                pramas:this.state.goods,
-                                search:this.props.location.search
-                            }} activeStyle={{color:'#FF00FF',fontWeight:'bold',}}>
-                                {item.text}
-                            </NavLink>
-                        </li>
-                    })}
-                </ul>
-            </div>
-            <Route path="/hotContent/all" component={HotContentAll}/>
-            <Route path="/hotContent/headline" component={HotContentHeadline}/>
-            <Route path="/hotContent/autor" component={HotContentAutor}/>
-            <Route path="/hotContent/text" component={HotContentText}/>
-            <Redirect to={"/hotContent/all"+this.props.location.search}/>
+            {
+                this.state.data.map((item,idx)=>{
+                return <div key={idx} style={{ padding: '0 15px' }} onClick={this.go.bind(this,item.title,item.authors)}>
+                    <div
+                    style={{
+                        padding:'5px 0',
+                        fontSize:'18px',
+                        fontWeight:'bold'
+                    }}
+                    >{item.title}</div>
+                    <div style={{paddingBottom:'5px'}}><span style={{ fontSize: '16px',color:'#FFE599'}}>{item.authors}</span></div>
+                    <div style={{padding:'5px 0',borderBottom:'1px solid #ddd'}}>
+                        <div style={{ marginBottom: '8px',fontSize:'16px',lineHeight:'20px' }}>{item.content.split('。')[0]}。</div>
+                    </div>
+                </div>
+                })
+            }    
         </div>
     }
 }

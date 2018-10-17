@@ -11,21 +11,35 @@ export default class Home extends Component{
             rhe:{
                 
             },
-            poem:{}
+            poem:{},
+            content:[]
         }
-        setInterval(this.changeTime.bind(this),1000)
-    }
-    componentWillUnmount(){
-        // changeTime(()=>{
-        //     this.setState({
-        //         now:this.formate(new Date())
-        //     })
-        // })
+        setInterval(this.changeTime.bind(this),1000);
+        this.goRhesis=this.goRhesis.bind(this)
+        this.goPoem=this.goPoem.bind(this)
     }
     changeTime(){
         this.setState({
             now:this.formate(new Date())
         })
+    }
+    goRhesis(){
+        http.get('singlePoetry').then(res=>{
+            console.log(res.data.result)
+            this.setState({
+                rhe:res.data.result
+            })
+        });
+    }
+    goPoem(){
+        http.get('recommendPoetry').then(res=>{
+            console.log(res.data.result)
+            let arr=res.data.result.content.split('|');
+            this.setState({
+                poem:res.data.result,
+                content:arr
+            })
+        });
     }
     formate(d){
         let year = d.getFullYear();
@@ -48,18 +62,8 @@ export default class Home extends Component{
             data: ['./img/001.jpg', './img/002.jpg', './img/003.jpg'],
           });
         }, 100);
-        http.get('singlePoetry').then(res=>{
-            console.log(res.data.result)
-            this.setState({
-                rhe:res.data.result
-            })
-        });
-        http.get('recommendPoetry').then(res=>{
-            console.log(res.data.result)
-            this.setState({
-                poem:res.data.result
-            })
-        });
+        this.goRhesis();
+        this.goPoem();
     }
     render(){
         return <div className="banana">
@@ -84,22 +88,25 @@ export default class Home extends Component{
                     </a>
                 ))}
                 </Carousel>
-                <div>{this.state.now}</div>
+                <div className="time">{this.state.now}</div>
                 <div className="rhesis">
-                    <h5><span>名句赏析</span><span>换一换？</span></h5>
+                    <div className="h_header"><span>名句赏析</span><span className="click" onClick={this.goRhesis}>换一换？</span></div>
                     <div className="rShow">
-                        <p>{this.state.rhe.content}</p>
+                        <p style={{color:'#7F7F7F'}}>{this.state.rhe.content}</p>
                         <p>出自：{this.state.rhe.origin}</p>
-                        <p>作者：{this.state.rhe.author}</p>
+                        <p style={{color:'#D0BA80'}}>作者：{this.state.rhe.author}</p>
                         <p>题材：{this.state.rhe.category}</p>
                     </div>
                 </div>
                 <div className="poem">
-                    <h5><span>名诗赏析</span><span>换一换？</span></h5>
+                    <div className="h_header"><span>名诗赏析</span><span className="click" onClick={this.goPoem}>换一换？</span></div>
                     <div className="rShow">
-                        <p>{this.state.poem.content}</p>
-                        <p>标题：{this.state.poem.title}</p>
-                        <p>作者：{this.state.poem.authors}</p>
+                        <p style={{color:'#343434'}}>{this.state.poem.title}</p>
+                        <div className="poemMain">{this.state.content.map((item,idx)=>{
+                            return <span key={idx}>{item}</span>
+                        })}</div>
+                        
+                        <p style={{color:'#D0BA80'}}>作者：{this.state.poem.authors}</p>
                     </div>
                 </div>
         </div>

@@ -39,7 +39,7 @@ class Poetry extends React.Component {
                 rightContent={[
                     <Icon key="1" type="ellipsis" />
                 ]}
-            >诗词汇</NavBar>
+            >中华诗词汇</NavBar>
             <Tab></Tab>
             <div className="placeholder"></div>
         </div>

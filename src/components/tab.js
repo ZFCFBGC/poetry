@@ -44,7 +44,7 @@ class Tab extends Component{
             <ul>
                 {this.state.menu.map((item,idx)=>{
                     return <li key={idx}>
-                        <NavLink key={idx} to={item.path} activeStyle={{color:'#FF00FF',fontWeight:'bold',}}>
+                        <NavLink key={idx} to={item.path} activeStyle={{color:'#3D3E39',fontWeight:'bold',}}>
                             {item.text}
                         </NavLink>
                     </li>

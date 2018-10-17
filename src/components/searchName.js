@@ -1,5 +1,4 @@
 import React,{Component}from 'react';
-import {Route} from 'react-router-dom';
 import PropTypes from 'prop-types';
 class SearchName extends Component{
     constructor(){
@@ -32,16 +31,26 @@ class SearchName extends Component{
 		// let {history} = this.context.router;
 		history.push({pathname:'/hotContent',search:'?name='+res});
 		// history.replace(path);
-	}
+    }
+    search(){
+        // var inpVal = this.input.value;这里的inpval就是input输入的值
+        let {history} = this.props;
+        history.push({pathname:'/hotContent',search:'?name='+this.input.value});
+    }
+
+    goHome(){
+        let {history} = this.props;
+		history.push({pathname:'/poetry/home'});
+    }
     render(){
         return  <div>
             <div className="searchHeader">
-                <div className="searchLeft">
+                <div className="searchLeft" onClick={this.goHome.bind(this)}>
                     &lt;
                 </div>
                 <div className="searchRight">
-                    <input type="text" placeholder="请输出关键字"/>
-                    <span className="btn">搜索</span>
+                    <input type="text" placeholder="请输出关键字" ref={input => this.input = input}/>
+                    <span className="btn" onClick={this.search.bind(this)}>搜索</span>
                 </div>
             </div>
             <div className="main">
