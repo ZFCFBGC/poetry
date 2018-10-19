@@ -16,7 +16,7 @@ class Tab extends Component{
                     text:'宋词',
                     path:'/poetry/song'
                 },{
-                    text:'作者',
+                    text:'与君语',
                     path:'/poetry/autor'
                 }
             ]

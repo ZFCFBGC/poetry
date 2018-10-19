@@ -40,17 +40,20 @@ html,body{height: 100%;background:#FAF6F3;}
 .rShow p:first-child{font-weight:bold;}
 .song{padding-top:117px;}
 .tang{padding-top:117px;}
+.more{padding-top:117px;}
+.hotcontent_main{padding-top:60px;z-index: 1;}
+.hotcontent_header{position: fixed;top:0px;left:0px;width:100%;z-index:100;background:#FAF6F3;}
 .searchHeader{display:flex;height:60px;border-bottom:1px solid #ddd;}
 .searchLeft{flex:1;text-align: center;line-height: 60px;font-size: 30px;color:#524E4B;}
-.searchRight{flex:4;margin:10px;border:1px solid #ccc;border-radius: 100px;padding:7px;}
+.searchRight{flex:4;margin:10px;border:1px solid #ccc;border-radius: 100px;padding:7px 0px 7px 7px;}
 .searchRight input{height:24px;border:0 none;margin-left:15px;padding-left:10px;background:#FFFBF8;}
 .searchRight .btn{height:24px;font-size:16px;line-height:24px;color:#C8B068;
-border-left:1px solid #ddd;padding:0 20px;display: inline-block;}
+border-left:1px solid #ddd;padding:0px 0px 0px 20px;display: inline-block;}
 .goods .main{padding:10px 20px 10px 20px;}
 .goods .main h6{font-size:20px;margin:20px 0;color:#999A95;}
 .goods .main span{display:inline-block;border:1px solid #ddd;font-size:16px;
     margin:0 0 10px 10px;padding:5px 15px;border-radius:20px;background:#FFFBF8;}
-.detail .title{height:30px;font-size: 18px;font-weight:bold;text-align: center;line-height: 30px;color:#333;padding:10px 0;}
+.detail .title{font-size: 18px;font-weight:bold;text-align: center;line-height: 30px;color:#333;padding:10px 0;}
 .detail .author{height:30px;font-size: 14px;text-align: center;line-height: 30px;color:#FFE599;padding-bottom:10px;}
 .detail .main span{display: block;text-align: center;height:30px;font-size: 16px;line-height:30px;color:#333;}
 .detail h2{padding-left:16px;color:#333;}
@@ -58,3 +61,16 @@ border-left:1px solid #ddd;padding:0 20px;display: inline-block;}
 .detail .abstract p{padding:5px 16px;font-size:16px;line-height: 24px;color:#808080;}
 .detail .am-navbar-light{background: #FAF6F3;color:#999999;}
 .detail .content{border-top:1px solid #ddd;}
+.more .comment{padding:0 10px;border-bottom:1px solid #ddd;}
+.more .comment h3{font-size:20px;color:#2B2B2B;}
+.more .comment .content{font-size:18px;line-height: 24px;color:#8C8C8C;}
+.more .comment .author{font-size: 14px;line-height: 30px;color:#D5C587;}
+.more .comment .like{text-align: right;color:#FF7373;font-size: 16px;line-height: 30px;}
+.loading-example {
+    display: flex;
+    justify-content: flex-start;
+  }
+.align {
+    display: flex;
+    flex-direction: column;
+}
